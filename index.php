@@ -18,7 +18,7 @@ $router->get('/profile', function () {
 HTML;
 });
 
-// Params example
+// Params example [API endpoint example]
 $router->get('/user/{username}', function ($request) {
   $users = [
     'faith' => [
@@ -34,10 +34,12 @@ $router->get('/user/{username}', function ($request) {
   return json_encode($users[$request->params->username]);
 });
 
+// Multiple params example [HTML example]
 $router->get('/user/{username}/address/{addressname}', function ($request) {
-  echo $request->params->addressname . '<br>';
-  echo $request->params->username . '<br>';
+  $username = $request->params->username;
+  $address = $request->params->addressname;
+
   return <<<HTML
-    <h1>User Address details</h1>
+    <h1>$username stays at $address</h1>
 HTML;
 });
